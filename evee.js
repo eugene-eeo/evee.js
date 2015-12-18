@@ -24,16 +24,12 @@ evee = (function() {
     },
 
     trigger: function(el, type) {
-      var opts = {
-        bubbles: true,
-        cancelable: true,
-      };
-      var isMouseType = mouseEvents.test(type);
-      var ev = new (isMouseType
-        ? MouseEvent
-        : Event)(type, opts);
-      el.dispatchEvent(ev);
-      return ev;
+      var cons = mouseEvents.test(type) ? MouseEvent : Event;
+      el.dispatchEvent(new cons(
+        type, {
+          bubbles: true,
+          cancelable: true,
+        }));
     },
   };
 })();
