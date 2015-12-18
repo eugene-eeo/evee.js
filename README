@@ -1,0 +1,23 @@
+
+                        ~ evee.js ~
+
+    Tiny, cross-browser, modern event binding micro-library
+    with support for leakless data-handler binding and triggering
+    events. Inspired by https://github.com/arextar/Vine.
+
+    Example usage:
+
+        evee.bind(elem, 'click', function(ev) {
+            assert(this === elem);
+            assert(ev.data === data);
+            assert(ev.target === elem);
+        }, data);
+
+        evee.unbind(elem, 'click', handler);
+
+        // simulate a cancellable mouse click
+        evee.trigger(elem, 'click');
+
+    Installation via bower:
+
+        bower install eugene-eeo/evee.js
