@@ -1,5 +1,4 @@
 evee = (function() {
-  var datas = new WeakStore();
   var funcs = new WeakStore();
   var mouseEvents = /click|mousedown|mouseup|mousemove/;
 
@@ -15,7 +14,6 @@ evee = (function() {
         return fn.call(el, new evee.Event(ev, data));
       };
       funcs.set(fn, h);
-      datas.set(fn, data);
       el.addEventListener(event, h);
     },
 
@@ -23,7 +21,6 @@ evee = (function() {
       var h = funcs.get(fn) || fn;
       el.removeEventListener(event, h);
       funcs.delete(fn);
-      datas.delete(fn);
     },
 
     trigger: function(el, event) {
