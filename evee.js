@@ -9,29 +9,29 @@ evee = (function() {
       this.data = data;
     },
 
-    bind: function(el, event, fn, data) {
+    bind: function(el, type, fn, data) {
       var h = function(ev) {
         return fn.call(el, new evee.Event(ev, data));
       };
       funcs.set(fn, h);
-      el.addEventListener(event, h);
+      el.addEventListener(type, h);
     },
 
-    unbind: function(el, event, fn) {
+    unbind: function(el, type, fn) {
       var h = funcs.get(fn) || fn;
-      el.removeEventListener(event, h);
+      el.removeEventListener(type, h);
       funcs.delete(fn);
     },
 
-    trigger: function(el, event) {
+    trigger: function(el, type) {
       var opts = {
         bubbles: true,
         cancelable: true,
       };
-      var isMouseType = mouseEvents.test(event);
-      var ev = isMouseType
-        ? new MouseEvent(event, opts)
-        : new Event(event, opts);
+      var isMouseType = mouseEvents.test(type);
+      var ev = new (isMouseType
+        ? MouseEvent
+        : Event)(type, opts);
       el.dispatchEvent(ev);
       return ev;
     },
