@@ -1,0 +1,28 @@
+{
+  "name": "evee.js",
+  "main": "evee.js",
+  "authors": [
+    "Eeo Jun <packwolf58@gmail.com>"
+  ],
+  "description": "simpler event binding",
+  "moduleType": [],
+  "keywords": [
+    "event",
+    "es5"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/eugene-eeo/evee.js",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "weakstore": "eugene-eeo/weakstore#~0.1.1"
+  },
+  "devDependencies": {
+    "mocha": "mochajs/mocha#~2.3.4"
+  }
+}
