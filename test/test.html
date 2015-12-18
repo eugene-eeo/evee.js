@@ -1,0 +1,28 @@
+<!doctype>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Mocha Tests</title>
+  <link href="../bower_components/mocha/mocha.css" rel="stylesheet" />
+</head>
+<body>
+  <div id="mocha"></div>
+
+  <div id='test'></div>
+
+  <script src="../bower_components/assert.js/assert.js"></script>
+  <script src="../bower_components/mocha/mocha.js"></script>
+  <script>mocha.setup('tdd')</script>
+
+  <script src="../bower_components/weakstore/weakstore.js"></script>
+  <script src="../evee.js"></script>
+  <script src="test.js"></script>
+  <script>
+    if (window.mochaPhantomJS) {
+      mochaPhantomJS.run();
+    } else {
+      mocha.run();
+    }
+  </script>
+</body>
+</html>

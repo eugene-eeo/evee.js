@@ -23,6 +23,7 @@
     "weakstore": "eugene-eeo/weakstore#~0.1.1"
   },
   "devDependencies": {
-    "mocha": "mochajs/mocha#~2.3.4"
+    "mocha": "mochajs/mocha#~2.3.4",
+    "assert.js": "eugene-eeo/assert.js#~0.1.1"
   }
 }

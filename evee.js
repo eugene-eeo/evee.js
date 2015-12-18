@@ -1,6 +1,6 @@
-evee = function() {
-  var datas = WeakStore();
-  var funcs = WeakStore();
+evee = (function() {
+  var datas = new WeakStore();
+  var funcs = new WeakStore();
   var mouseEvents = /click|mousedown|mouseup|mousemove/;
 
   return {
@@ -8,7 +8,8 @@ evee = function() {
       for (var item in ev)
         this[item] = ev[item];
       this.data = data;
-      this.target || (this.target = ev.srcElement);
+      if (!this.target)
+        this.target = ev.srcElement;
     },
 
     bind: function(el, event, fn, data) {
@@ -21,7 +22,7 @@ evee = function() {
     },
 
     unbind: function(el, event, fn) {
-      var h = funcs.get(fn);
+      var h = funcs.get(fn) || fn;
       el.removeEventListener(event, h);
       funcs.delete(fn);
       datas.delete(fn);
@@ -34,10 +35,10 @@ evee = function() {
       };
       var isMouseType = mouseEvents.test(event);
       var ev = isMouseType
-        ? new MouseEvent(type, opts)
-        : new Event(type, opts);
+        ? new MouseEvent(event, opts)
+        : new Event(event, opts);
       el.dispatchEvent(ev);
       return ev;
     },
   };
-};
+})();
