@@ -8,8 +8,6 @@ evee = (function() {
       for (var item in ev)
         this[item] = ev[item];
       this.data = data;
-      if (!this.target)
-        this.target = ev.srcElement;
     },
 
     bind: function(el, event, fn, data) {
