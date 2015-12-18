@@ -7,6 +7,7 @@ suite('evee', function() {
     data.r += 1;
     assert(this === elem);
     assert(ev.data === data);
+    assert(ev.target === elem);
   };
 
   test('evee#trigger works for normal events', function() {
