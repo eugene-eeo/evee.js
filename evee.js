@@ -20,7 +20,6 @@ evee = (function() {
     unbind: function(el, type, fn) {
       var h = funcs.get(fn) || fn;
       el.removeEventListener(type, h);
-      funcs.delete(fn);
     },
 
     trigger: function(el, type) {
