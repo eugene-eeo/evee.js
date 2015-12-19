@@ -21,6 +21,25 @@ evee.au.on(el, t, data, fn);
 evee.au.off(el, t, fn);
 ```
 
+How does it work? Autobind's `on` and `off` works by
+having a weakmap of all elements to objects that
+store event types and weakmaps of original functions
+to the bound functions. Essentially,
+
+```
+WeakMap(Element -> {
+  selector:String -> WeakMap(
+    original:Function -> Array(bound:Function)
+    )
+})
+```
+
+So when you `off` a "normal" function autobind will
+remember and know which handler you want to remove.
+Note that autobind's `off` function gives priority
+to functions bound using `on`, that is, to the
+elements and functions that it has "seen" before.
+
 ## delegate.js
 
 ```html
