@@ -16,7 +16,7 @@
   };
 
   D.prototype = {
-    data: function(type, selector, handler) {
+    data: function(type, selector) {
       var r = this.store[type] || (r = this.store[type] = {}, r);
       var a = r[selector]      || (a = r[selector] = []);
       return a;
@@ -25,7 +25,7 @@
     bind: function(type, selector, fn, data) {
       var h = function(ev) {
         var target = ev.target;
-        while (target !== this.el) {
+        while (target && (target !== this.el)) {
           if (matchesSelector.call(target, selector))
             fn.call(target, ev);
           target = target.parentNode;
@@ -48,7 +48,7 @@
     off: function() {
       for (var type in this.store)
         for (var selector in this.store[type])
-          this.unbind(selector, type);
+          this.unbind(type, selector);
     },
   };
 
