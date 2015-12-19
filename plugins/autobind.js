@@ -1,6 +1,6 @@
 evee.au = (function() {
   var store = new WeakStore();
-  var dataOf = function(el, type, handler) {
+  var dataOf = function(el, type, fn) {
     var r = store.get(el) || (store.set(el, r={}), r);
     var o = r[type]       || (o = r[type] = new WeakStore(), o);
     var a = o.get(fn)     || (o.set(fn, a=[]), a);
@@ -13,7 +13,7 @@ evee.au = (function() {
     this.data = data;
   };
 
-  var make = function(fn, data) {
+  var make = function(data, fn) {
     return function(ev) {
       return fn.call(this, new Event(fn, data));
     };
@@ -21,8 +21,8 @@ evee.au = (function() {
 
   return {
     make: make,
-    bind: function(el, type, fn, data) {
-      var h = make(fn);
+    bind: function(el, type, data, fn) {
+      var h = make(data, fn);
       dataOf(el, type, fn).push(h);
       evee.bind(el, type, h);
     },

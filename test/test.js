@@ -8,7 +8,7 @@ describe('evee', function() {
     assert(ev.target === elem);
   };
 
-  describe('evee#trigger', function() {
+  describe('#trigger', function() {
     it('works for normal events', function() {
       evee.bind(elem, 'focus', handler);
       evee.trigger(elem, 'focus');
@@ -30,7 +30,7 @@ describe('evee', function() {
     });
   });
 
-  describe('evee#unbind', function() {
+  describe('#unbind', function() {
     it('unbinds handlers', function() {
       var fn = function() {
         data.g = 1;
