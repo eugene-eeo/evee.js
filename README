@@ -1,23 +1,45 @@
 
                   ~ evee.js ~
 
-    Tiny, cross-browser, modern event binding
-    micro-library with support for leakless
+    Tiny, modular, cross-browser, modern event
+    binding micro-library with support for leakless
     data-handler binding and triggering events.
     Inspired by https://github.com/arextar/Vine.
 
     Example usage:
 
-      evee.bind(elem, 'click', function(ev) {
-        assert(this === elem);
-        assert(ev.data === data);
-        assert(ev.target === elem);
-      }, data);
+      evee.bind(el, 'click', function(ev) {
+      });
 
-      evee.unbind(elem, 'click', handler);
+      evee.unbind(el, 'click', handler);
 
       // simulate a cancellable mouse click
-      evee.trigger(elem, 'click');
+      evee.trigger(el, 'click');
+
+                   ~ Plugins ~
+
+    autobind.js: data binding to help include some
+    data alongside your event.
+
+      var fn = evee.au.make(function(ev) {
+      }, data);
+      evee.bind(el, 'click', fn);
+
+    But wait, there's more!
+
+      evee.au.bind(el, 'click', function(ev) {
+        ev.data === data;
+      }, data);
+
+      evee.au.unbind(el, 'click', fn);
+
+    delegate.js: Event delegation support.
+
+      var d = new evee.delegate(el);
+      d.bind('click', 'selector', function(ev) {
+      });
+      d.unbind('click', 'selector' [,fn]);
+      d.off();
 
     Installation via bower:
 
