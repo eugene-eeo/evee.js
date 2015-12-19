@@ -25,7 +25,7 @@
         var target = ev.target;
         while (target && (target !== this.el)) {
           if (matchesSelector.call(target, selector))
-            fn.call(target, ev);
+            fn(ev);
           target = target.parentNode;
         };
       };

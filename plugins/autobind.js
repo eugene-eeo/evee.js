@@ -15,7 +15,7 @@ evee.au = (function() {
 
   var make = function(data, fn) {
     return function(ev) {
-      return fn.call(this, new Event(fn, data));
+      return fn(new Event(fn, data));
     };
   };
 
