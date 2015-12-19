@@ -12,9 +12,9 @@ evee = (function() {
     },
 
     trigger: function(el, type) {
-      var cons;
-      cons = mseEvents.test(type) ? MouseEvent : Event;
-      cons = kbdEvents.test(type) ? KeyboardEvent : cons;
+      var cons = mseEvents.test(type)
+        ? MouseEvent
+        : (kbdEvents.test(type) ? KeyboardEvent : Event);
       el.dispatchEvent(new cons(
         type, {
           bubbles: true,
