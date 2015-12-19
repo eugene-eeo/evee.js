@@ -6,8 +6,8 @@ Modular, modern, and tiny DOM events library.
  - The entire suite (including all plugins) weighs
    in around 0.8kB minified and gzipped
  - Support for event delegation and data binding
+ - Extensible with [plugins](https://github.com/eugene-eeo/evee.js/tree/master/plugins)
  - Works without the DOM
- - Easily extensible
 
 Works great with [salt.js](https://github.com/james2doyle/saltjs)
 and [nanojax](https://github.com/yanatan16/nanoajax).
@@ -24,10 +24,6 @@ evee.on(el, 'click', function(ev) {
 evee.fire(el, 'click');
 evee.off(el, 'click', fn);
 ```
-
-Evee.js by default does not include the data binding
-or event delegation features. If you need those just
-head to the [plugins](https://github.com/eugene-eeo/evee.js/tree/master/plugins).
 
 ### Installation
 

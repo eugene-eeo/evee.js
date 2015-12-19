@@ -1,5 +1,3 @@
-# Plugins
-
 ## once.js
 
 ```js
@@ -28,10 +26,6 @@ evee.au.off(el, t, fn);
 ```html
 <table>
   <tr class='h'>
-    <td></td>
-    <td></td>
-  </tr>
-  <tr>
     <td></td>
     <td></td>
   </tr>
