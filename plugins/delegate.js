@@ -1,16 +1,14 @@
 (function() {
-  var f = document.createElement('i');
+  var e = Element.prototype;
   var matchesSelector = (
-    f.matches
-      || f.webkitMatchesSelector
-      || f.mozMatchesSelector
-      || f.msMatchesSelector
-      || f.oMatchesSelector
+    e.matches
+      || e.webkitMatchesSelector
+      || e.mozMatchesSelector
+      || e.msMatchesSelector
+      || e.oMatchesSelector
   );
 
   var D = function(el) {
-    if (!(this instanceof D))
-      return new D(el);
     this.store = {};
     this.el = el;
   };
