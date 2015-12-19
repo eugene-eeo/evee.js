@@ -17,8 +17,8 @@
 
   D.prototype = {
     data: function(type, selector, handler) {
-      var r = this.store[type]  || (r = this.store[type] = {}, r);
-      var a = r[selector]       || (a = r[selector] = []);
+      var r = this.store[type] || (r = this.store[type] = {}, r);
+      var a = r[selector]      || (a = r[selector] = []);
       return a;
     },
 
