@@ -17,27 +17,27 @@ describe('evee.au', function() {
     });
   });
 
-  describe('#bind', function() {
+  describe('#on', function() {
     var elem = document.createElement('p');
     var data = {r: 0};
     
     it('binds the event handler', function(done) {
-      evee.au.bind(elem, 'click', data, function(ev) {
+      evee.au.on(elem, 'click', data, function(ev) {
         done();
       });
-      evee.trigger(elem, 'click');
+      evee.fire(elem, 'click');
     });
 
     it('sets Event.data', function() {
-      evee.au.bind(elem, 'focus', data, function(ev) {
+      evee.au.on(elem, 'focus', data, function(ev) {
         assert(ev.data === data);
         assert(ev.target === elem);
       });
-      evee.trigger(elem, 'focus');
+      evee.fire(elem, 'focus');
     });
   });
 
-  describe('#unbind', function() {
+  describe('#off', function() {
     var elem = $('#test');
     var data = {r: 0};
 
@@ -45,9 +45,9 @@ describe('evee.au', function() {
       var fn = function(ev) {
         data.r = 1;
       };
-      evee.au.bind(elem, 'click', data, fn);
-      evee.au.unbind(elem, 'click', fn);
-      evee.trigger(elem, 'click');
+      evee.au.on(elem, 'click', data, fn);
+      evee.au.off(elem, 'click', fn);
+      evee.fire(elem, 'click');
       assert(data.r === 0);
     });
 
@@ -55,9 +55,9 @@ describe('evee.au', function() {
       var fn = function(ev) {
         data.r = 1;
       };
-      evee.bind(elem, 'click', fn);
-      evee.au.unbind(elem, 'click', fn);
-      evee.trigger(elem, 'click');
+      evee.on(elem, 'click', fn);
+      evee.au.off(elem, 'click', fn);
+      evee.fire(elem, 'click');
       assert(data.r === 0);
     });
   });

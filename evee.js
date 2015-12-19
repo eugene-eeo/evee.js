@@ -3,15 +3,15 @@ evee = (function() {
   var kbdEvents = /keydown|keyup|keypress/;
 
   return {
-    bind: function(el, type, fn) {
+    on: function(el, type, fn) {
       el.addEventListener(type, fn);
     },
 
-    unbind: function(el, type, fn) {
+    off: function(el, type, fn) {
       el.removeEventListener(type, fn);
     },
 
-    trigger: function(el, type) {
+    fire: function(el, type) {
       var cons = mseEvents.test(type)
         ? MouseEvent
         : (kbdEvents.test(type) ? KeyboardEvent : Event);

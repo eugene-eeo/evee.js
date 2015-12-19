@@ -5,17 +5,17 @@ describe('evee.once', function() {
     evee.once(e, 'click', function() {
       done();
     });
-    evee.trigger(e, 'click');
+    evee.fire(e, 'click');
   });
 
   it('only executes the handler once', function() {
-    var o = [];
+    var o = 0;
     evee.once(e, 'focus', function() {
-      o.push(1);
+      o += 1;
     });
-    evee.trigger(e, 'focus');
-    assert(o.length === 1);
-    evee.trigger(e, 'focus');
-    assert(o.length === 1);
+    evee.fire(e, 'focus');
+    assert(o === 1);
+    evee.fire(e, 'focus');
+    assert(o === 1);
   });
 });

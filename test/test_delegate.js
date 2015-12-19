@@ -6,63 +6,61 @@ describe('evee.delegate()', function() {
   var c = Array.prototype.slice.call(e.childNodes);
   var d = new evee.delegate(e);
 
-  describe('#bind', function() {
+  describe('#on', function() {
     it('calls the handler with the correct target', function() {
       var data = {};
-      d.bind('click', 'i', function(ev) {
+      d.on('click', 'i', function(ev) {
         assert(ev.target === data.el);
       });
       for (var i=c.length; i--;) {
         data.el = c[i];
-        evee.trigger(c[i], 'click');
+        evee.fire(c[i], 'click');
       };
-      d.unbind('click', 'i');
+      d.off('click', 'i');
     });
 
     it('will not fire if the selector does not match', function() {
       var b = document.createElement('b');
       e.appendChild(b);
-      d.bind('click', '#crazy .class #id', function() {
+      d.on('click', '#crazy .class #id', function() {
         assert(false);
       });
-      evee.trigger(b, 'click');
+      evee.fire(b, 'click');
     });
   });
 
-  describe('#unbind', function() {
+  describe('#off', function() {
     it('unbinds the handler if specified', function() {
       var f = function() { assert(false); };
-      d.bind('focus', 'i', f);
-      d.unbind('focus', 'i', f);
-      evee.trigger(c[0], 'focus');
+      d.on('focus', 'i', f);
+      d.off('focus', 'i', f);
+      evee.fire(c[0], 'focus');
     });
 
     it('unbinds all handlers of a type if specified', function() {
       var f = function() { assert(false); };
       var g = function() { assert(false); };
-      d.bind('focus', 'i', f);
-      d.unbind('focus');
-      evee.trigger(c[0], 'focus');
+      d.on('focus', 'i', f);
+      d.off('focus');
+      evee.fire(c[0], 'focus');
     });
 
     it('unbinds all handlers if not', function() {
       var f1 = function() { assert(false); };
       var f2 = function() { assert(false); };
-      d.bind('focus', 'i', f1);
-      d.bind('focus', 'i', f2);
-      d.unbind('focus', 'i');
-      evee.trigger(c[0], 'focus');
+      d.on('focus', 'i', f1);
+      d.on('focus', 'i', f2);
+      d.off('focus', 'i');
+      evee.fire(c[0], 'focus');
     });
-  });
 
-  describe('#off', function() {
-    it('unbinds everything', function() {
+    it('unbinds everything if no arguments', function() {
       var fn = function() { assert(false); };
-      d.bind('focus', 'i', fn);
-      d.bind('click', 'i', fn);
+      d.on('focus', 'i', fn);
+      d.on('click', 'i', fn);
       d.off();
-      evee.trigger(c[0], 'focus');
-      evee.trigger(c[0], 'click');
+      evee.fire(c[0], 'focus');
+      evee.fire(c[0], 'click');
     });
   });
 });

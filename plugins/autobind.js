@@ -21,13 +21,13 @@ evee.au = (function() {
 
   return {
     make: make,
-    bind: function(el, type, data, fn) {
+    on: function(el, type, data, fn) {
       var h = make(data, fn);
       dataOf(el, type, fn).push(h);
-      evee.bind(el, type, h);
+      evee.on(el, type, h);
     },
-    unbind: function(el, type, fn) {
-      evee.unbind(el, type, (dataOf(el, type, fn).pop() || fn));
+    off: function(el, type, fn) {
+      evee.off(el, type, (dataOf(el, type, fn).pop() || fn));
     }
   };
 })();

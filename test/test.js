@@ -8,36 +8,36 @@ describe('evee', function() {
     assert(ev.target === elem);
   };
 
-  describe('#trigger', function() {
+  describe('#fire', function() {
     it('works for normal events', function() {
-      evee.bind(elem, 'focus', handler);
-      evee.trigger(elem, 'focus');
+      evee.on(elem, 'focus', handler);
+      evee.fire(elem, 'focus');
       assert(data.r === 1);
     });
 
     it('works for mouse events', function() {
-      evee.bind(elem, 'click', handler);
-      evee.trigger(elem, 'click');
+      evee.on(elem, 'click', handler);
+      evee.fire(elem, 'click');
       assert(data.r === 2);
     });
 
     it('works for keyboard events', function() {
-      evee.bind(elem, 'keydown', function() {
+      evee.on(elem, 'keydown', function() {
         data.t = 1;
       });
-      evee.trigger(elem, 'keydown');
+      evee.fire(elem, 'keydown');
       assert(data.t === 1);
     });
   });
 
-  describe('#unbind', function() {
+  describe('#off', function() {
     it('unbinds handlers', function() {
       var fn = function() {
         data.g = 1;
       }
-      evee.bind(elem, 'click', fn);
-      evee.unbind(elem, 'click', fn);
-      evee.trigger(elem, 'click');
+      evee.on(elem, 'click', fn);
+      evee.off(elem, 'click', fn);
+      evee.fire(elem, 'click');
       assert(!data.g);
     });
   });

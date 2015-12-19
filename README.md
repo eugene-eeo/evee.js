@@ -19,10 +19,10 @@ and [nanojax](https://github.com/yanatan16/nanoajax).
 ```
 
 ```js
-evee.bind(el, 'click', function(ev) {
+evee.on(el, 'click', function(ev) {
 });
-evee.trigger(el, 'click');
-evee.unbind(el, 'click', fn);
+evee.fire(el, 'click');
+evee.off(el, 'click', fn);
 ```
 
 Evee.js by default does not include the data binding

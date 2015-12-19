@@ -20,7 +20,7 @@
       return a;
     },
 
-    bind: function(type, selector, fn, data) {
+    on: function(type, selector, fn, data) {
       var h = function(ev) {
         var target = ev.target;
         while (target && (target !== this.el)) {
@@ -29,29 +29,27 @@
           target = target.parentNode;
         };
       };
-      evee.bind(this.el, type, h, data);
+      evee.on(this.el, type, h, data);
       this.data(type, selector).push({
         o: fn,
         r: h,
       });
     },
 
-    unbind: function(type, selector, fn) {
+    off: function(type, selector, fn) {
+      if (!type) {
+        for (var type in this.store)
+          this.off(type, selector);
+      }
       if (!selector) {
         for (var selector in this.store[type])
-          this.unbind(type, selector);
+          this.off(type, selector);
         return;
       }
       var a = this.data(type, selector);
       for (var i = a.length; i--;)
         if (!fn || a[i].o === fn)
-          evee.unbind(this.el, type, a[i].r);
-    },
-
-    off: function() {
-      for (var type in this.store)
-        for (var selector in this.store[type])
-          this.unbind(type, selector);
+          evee.off(this.el, type, a[i].r);
     },
   };
 
