@@ -21,8 +21,8 @@ evee.au.on(el, t, data, fn);
 evee.au.off(el, t, fn);
 ```
 
-How does it work? Autobind's `on` and `off` works by
-having a weakmap of all elements to objects that
+**How does it work?** Autobind's `on` and `off` works
+by having a weakmap of all elements to objects that
 store event types and weakmaps of original functions
 to the bound functions. Essentially,
 
