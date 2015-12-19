@@ -37,19 +37,18 @@
     },
 
     off: function(type, selector, fn) {
-      if (!type) {
+      if (!type)
         for (var type in this.store)
-          this.off(type, selector);
-      }
-      if (!selector) {
+          this.off(type);
+      else if (!selector)
         for (var selector in this.store[type])
           this.off(type, selector);
-        return;
+      else {
+        var a = this.data(type, selector);
+        for (var i = a.length; i--;)
+          if (!fn || a[i].o === fn)
+            evee.off(this.el, type, a[i].r);
       }
-      var a = this.data(type, selector);
-      for (var i = a.length; i--;)
-        if (!fn || a[i].o === fn)
-          evee.off(this.el, type, a[i].r);
     },
   };
 
