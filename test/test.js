@@ -1,5 +1,5 @@
 describe('evee', function() {
-  var $ = document.getElementById.bind(document);
+  var $ = document.createElement.bind(document);
   var data = {r: 0};
   var elem = $('test');
 

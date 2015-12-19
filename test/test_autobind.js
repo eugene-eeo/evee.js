@@ -1,5 +1,5 @@
 describe('evee.au', function() {
-  var $ = document.querySelector.bind(document);
+  var $ = document.createElement.bind(document);
 
   describe('#make', function() {
     it('invokes the function when invoked', function(done) {
@@ -18,7 +18,7 @@ describe('evee.au', function() {
   });
 
   describe('#on', function() {
-    var elem = document.createElement('p');
+    var elem = $('p');
     var data = {r: 0};
     
     it('binds the event handler', function(done) {
@@ -38,7 +38,7 @@ describe('evee.au', function() {
   });
 
   describe('#off', function() {
-    var elem = $('#test');
+    var elem = $('p');
     var data = {r: 0};
 
     it('unbinds the event handler', function() {
