@@ -18,22 +18,30 @@ describe('evee.delegate()', function() {
       };
       d.unbind('click', 'i');
     });
+
+    it('will not fire if the selector does not match', function() {
+      var b = document.createElement('b');
+      e.appendChild(b);
+      d.bind('click', 'i', function() {
+        assert(false);
+      });
+      evee.trigger(b, 'click');
+    });
   });
 
   describe('#unbind', function() {
-    it('unbinds the handler if specified', function(done) {
-      var f1 = function() { assert(false); };
-      var f2 = function() { done(); };
-      d.bind('click', 'i', f1);
-      d.bind('click', 'i', f2);
-      d.unbind('click', 'i', f1);
-      evee.trigger(c[0], 'click');
+    it('unbinds the handler if specified', function() {
+      var f = function() { assert(false); };
+      d.bind('focus', 'i', f);
+      d.unbind('focus', 'i', f);
+      evee.trigger(c[0], 'focus');
     });
 
     it('unbinds all handlers if not', function() {
-      var fn = function() { assert(false); };
-      d.bind('focus', 'i', fn);
-      d.bind('focus', 'i', fn);
+      var f1 = function() { assert(false); };
+      var f2 = function() { assert(false); };
+      d.bind('focus', 'i', f1);
+      d.bind('focus', 'i', f2);
       d.unbind('focus', 'i');
       evee.trigger(c[0], 'focus');
     });
