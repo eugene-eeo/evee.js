@@ -18,7 +18,7 @@ describe('evee.au', function() {
   });
 
   describe('#bind', function() {
-    var elem = $('#test');
+    var elem = document.createElement('p');
     var data = {r: 0};
     
     it('binds the event handler', function(done) {
@@ -29,10 +29,11 @@ describe('evee.au', function() {
     });
 
     it('sets Event.data', function() {
-      evee.au.bind(elem, 'click', data, function(ev) {
+      evee.au.bind(elem, 'focus', data, function(ev) {
         assert(ev.data === data);
+        assert(ev.target === elem);
       });
-      evee.trigger(elem, 'click');
+      evee.trigger(elem, 'focus');
     });
   });
 
