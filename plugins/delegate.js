@@ -37,6 +37,11 @@
     },
 
     unbind: function(type, selector, fn) {
+      if (!selector) {
+        for (var selector in this.store[type])
+          this.unbind(type, selector);
+        return;
+      }
       var a = this.data(type, selector);
       for (var i = a.length; i--;)
         if (!fn || a[i].o === fn)

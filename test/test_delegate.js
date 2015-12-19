@@ -22,7 +22,7 @@ describe('evee.delegate()', function() {
     it('will not fire if the selector does not match', function() {
       var b = document.createElement('b');
       e.appendChild(b);
-      d.bind('click', 'i', function() {
+      d.bind('click', '#crazy .class #id', function() {
         assert(false);
       });
       evee.trigger(b, 'click');
@@ -34,6 +34,14 @@ describe('evee.delegate()', function() {
       var f = function() { assert(false); };
       d.bind('focus', 'i', f);
       d.unbind('focus', 'i', f);
+      evee.trigger(c[0], 'focus');
+    });
+
+    it('unbinds all handlers of a type if specified', function() {
+      var f = function() { assert(false); };
+      var g = function() { assert(false); };
+      d.bind('focus', 'i', f);
+      d.unbind('focus');
       evee.trigger(c[0], 'focus');
     });
 
