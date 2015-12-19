@@ -2,6 +2,13 @@ evee = (function() {
   var store = new WeakStore();
   var mouseEvents = /click|mousedown|mouseup|mousemove/;
 
+  var dataOf = function(el, type, fn) {
+    var r = store.get(el) || (store.set(el, r={}), r);
+    var o = r[type]       || (o = r[type] = new WeakStore(), o);
+    var a = o.get(fn)     || (o.set(fn, a=[]), a);
+    return a;
+  };
+
   return {
     Event: function(ev, data) {
       for (var item in ev)
@@ -13,25 +20,12 @@ evee = (function() {
       var h = function(ev) {
         return fn.call(el, new evee.Event(ev, data));
       }; 
-      var r = store.get(el) || {};
-      var o = r[type] || new WeakStore();
-      o.has(fn)
-        ? o.get(fn).push(h)
-        : o.set(fn, [h]);
-      r[type] = o;
-      store.set(el, r);
+      dataOf(el, type, fn).push(h);
       el.addEventListener(type, h);
     },
 
     unbind: function(el, type, fn) {
-      if (store.has(el)) {
-        var r = store.get(el) || {};
-        var o = r[type];
-        if (o && o.has(fn)) {
-          fn = o.get(fn).pop();
-          o.delete(fn);
-        }
-      }
+      fn = dataOf(el, type, fn).pop() || fn;
       el.removeEventListener(type, fn);
     },
 
