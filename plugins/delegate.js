@@ -29,11 +29,11 @@
           target = target.parentNode;
         };
       };
+      evee.bind(this.el, type, h, data);
       this.data(type, selector).push({
         o: fn,
         r: h,
       });
-      evee.bind(this.el, type, h, data);
     },
 
     unbind: function(type, selector, fn) {
