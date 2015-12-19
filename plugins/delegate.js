@@ -40,15 +40,17 @@
       if (!type) {
         for (var type in this.store)
           this.off(type);
-      } else if (!selector) {
+        return;
+      }
+      if (!selector) {
         for (var selector in this.store[type])
           this.off(type, selector);
-      } else {
-        var a = this.data(type, selector);
-        for (var i = a.length; i--;)
-          if (!fn || a[i].o === fn)
-            evee.off(this.el, type, a[i].r);
+        return;
       }
+      var a = this.data(type, selector);
+      for (var i = a.length; i--;)
+        if (!fn || a[i].o === fn)
+          evee.off(this.el, type, a[i].r);
     },
   };
 
