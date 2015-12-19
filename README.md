@@ -28,16 +28,16 @@ Magical data binding to help include some contextual data
 without having to manage all the functions yourself.
 
 ```js
-var fn = evee.au.make(function(ev) {
-}, data);
+var fn = evee.au.make(data, function(ev) {
+});
 evee.bind(el, 'click', fn);
 ```
 But wait, there's more!
 
 ```js
-evee.au.bind(el, 'click', function(ev) {
+evee.au.bind(el, 'click', data, function(ev) {
   ev.data === data;
-}, data);
+});
 
 evee.au.unbind(el, 'click', fn);
 ```
