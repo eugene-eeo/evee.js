@@ -29,7 +29,7 @@
           target = target.parentNode;
         };
       };
-      evee.on(this.el, type, h, data);
+      evee.on(this.el, type, h);
       this.data(type, selector).push({
         o: fn,
         r: h,
