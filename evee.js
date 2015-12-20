@@ -1,6 +1,6 @@
 evee = (function() {
-  var mseEvents = /click|mousedown|mouseup|mousemove/;
-  var kbdEvents = /keydown|keyup|keypress/;
+  var mseEvents = /click|mouse(down|up|move)/;
+  var kbdEvents = /key(down|up|press)/;
 
   return {
     on: function(el, type, fn) {
