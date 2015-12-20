@@ -1,6 +1,5 @@
 evee.once = function(el, type, fn) {
-  var f;
-  evee.on(el, type, f=function(ev) {
+  evee.on(el, type, function f(ev) {
     fn(ev);
     evee.off(el, type, f);
   });
