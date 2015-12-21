@@ -27,7 +27,7 @@
           if (matchesSelector.call(target, selector))
             fn(ev);
           target = target.parentNode;
-        };
+        }
       };
       evee.on(this.el, type, h);
       this.data(type, selector).push({
@@ -38,12 +38,12 @@
 
     off: function(type, selector, fn) {
       if (!type) {
-        for (var type in this.store)
+        for (type in this.store)
           this.off(type);
         return;
       }
       if (!selector) {
-        for (var selector in this.store[type])
+        for (selector in this.store[type])
           this.off(type, selector);
         return;
       }
