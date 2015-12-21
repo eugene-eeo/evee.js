@@ -20,7 +20,7 @@
       return a;
     },
 
-    on: function(type, selector, fn, data) {
+    on: function(type, selector, fn) {
       var h = function(ev) {
         var target = ev.target;
         while (target && (target !== this.el)) {
