@@ -32,6 +32,6 @@ evee.off(el, t, fn);
 ```
 
 ```js
-var fn = evee.delegate(table, 'click', 'i', function(ev) {
+var fn = evee.delegate(table, 'click', '.h', function(ev) {
 });
 ```
