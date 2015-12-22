@@ -8,7 +8,7 @@ evee.make = (function() {
   return function(data, fn) {
     return function(ev) {
       fn(new Event(ev, data));
-    }
+    };
   };
 })();
 
