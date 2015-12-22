@@ -3,7 +3,7 @@ describe('evee.bind', function() {
   var data = {r: 0};
 
   it('binds the event handler', function(done) {
-    evee.bind(elem, 'click', data, function(ev) {
+    evee.bind(elem, 'click', function(ev) {
       done();
     });
     evee.fire(elem, 'click');
