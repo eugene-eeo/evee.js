@@ -6,8 +6,8 @@ Modular, modern, and tiny DOM events library.
  - The entire suite (including all plugins) weighs
    in around 0.8kB minified and gzipped
  - Support for event delegation and data binding
+ - No mucking around with prototypes
  - Extensible with [plugins](https://github.com/eugene-eeo/evee.js/tree/master/plugins)
- - Works without the DOM
 
 Works great with [salt.js](https://github.com/james2doyle/saltjs)
 and [nanojax](https://github.com/yanatan16/nanoajax).
