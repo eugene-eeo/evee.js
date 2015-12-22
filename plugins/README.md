@@ -5,7 +5,7 @@ evee.once(el, 'click', function(ev) {
 });
 ```
 
-## autobind.js
+## bind.js
 
 ```js
 // data is now available in ev.data
