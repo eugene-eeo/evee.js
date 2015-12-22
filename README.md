@@ -4,8 +4,8 @@ Modular, modern, and tiny DOM events library.
 
  - Comes in at 0.3kB minified without any plugins
  - The entire suite (including all plugins) weighs
-   in around 0.4kB minified and gzipped
- - Support for event delegation and data binding
+   in around 0.8kB minified
+ - Support for event delegation and Event data
  - No mucking around with prototypes
  - Extensible with [plugins](https://github.com/eugene-eeo/evee.js/tree/master/plugins)
 
