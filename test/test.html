@@ -12,11 +12,13 @@
   <script src="../bower_components/mocha/mocha.js"></script>
   <script>mocha.setup('bdd')</script>
 
-  <script src="../bower_components/weakstore/weakstore.js"></script>
   <script src="../evee.js"></script>
   <script src="../plugins/delegate.js"></script>
   <script src="../plugins/autobind.js"></script>
   <script src="../plugins/once.js"></script>
+  <script>
+  $ = document.createElement.bind(document);
+  </script>
 
   <script src="test.js"></script>
   <script src="test_autobind.js"></script>
