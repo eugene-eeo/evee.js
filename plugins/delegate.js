@@ -49,8 +49,10 @@
       }
       var a = this.data(type, selector);
       for (var i = a.length; i--;)
-        if (!fn || a[i].o === fn)
+        if (!fn || a[i].o === fn) {
           evee.off(this.el, type, a[i].r);
+          a.splice(i, 1);
+        }
     },
   };
 
