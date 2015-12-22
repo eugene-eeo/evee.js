@@ -16,4 +16,12 @@ describe('evee.bind', function() {
     });
     evee.fire(elem, 'focus');
   });
+
+  it('returns the bound handler', function() {
+    var h = evee.bind(elem, 'keyup', data, function(ev) {
+      assert(false);
+    });
+    evee.off(elem, 'keyup', h);
+    evee.fire(elem, 'keyup');
+  });
 });
