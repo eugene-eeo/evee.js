@@ -59,6 +59,6 @@ describe('evee.delegate', function() {
   });
 
   after(function() {
-    document.removeChild(el);
+    document.body.removeChild(el);
   });
 });
