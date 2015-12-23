@@ -19,7 +19,7 @@ and [nanojax](https://github.com/yanatan16/nanoajax).
 ```
 
 ```js
-evee.on(el, 'click', function(ev) {
+var fn = evee.on(el, 'click', function(ev) {
 });
 evee.fire(el, 'click');
 evee.off(el, 'click', fn);
