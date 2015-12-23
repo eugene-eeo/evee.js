@@ -1,45 +1,60 @@
 describe('evee.delegate', function() {
-  var e = $('p');
-  for (var i=3; i--;)
-    e.appendChild($('i'));
-  var c = e.childNodes;
+  var el = $('div');
+  var children = [
+    $('a'),
+    $('a'),
+    $('a'),
+  ];
 
-  it('returns the delegated handler', function() {
-    var h = evee.delegate(e, 'click', 'i', function(ev) {
+  // Workaround for safari - event handlers are not fired if
+  // they are not bound to a "real" node.
+  document.body.appendChild(el);
+
+  for (var i=children.length; i--;)
+    el.appendChild(children[i]);
+
+  it('binds the event handler to the parent element', function(done) {
+    evee.delegate(el, 'click', 'a', function() {
+      done();
+    });
+    evee.fire(children[0], 'click');
+  });
+
+  it('returns the event handler', function() {
+    var h = evee.delegate(el, 'focus', 'a', function() {
       assert(false);
     });
-    evee.off(e, 'click', h);
-    evee.fire(e, 'click');
+    evee.fire(el, 'focus');
+    evee.off(el, 'focus', h);
   });
 
   it('calls the handler with the correct target', function() {
     var data = {};
-    var h = evee.delegate(e, 'click', 'i', function(ev) {
+    var h = evee.delegate(el, 'focus', 'a', function(ev) {
       assert(ev.target === data.el);
     });
-    for (var i=c.length; i--;) {
-      data.el = c[i];
-      evee.fire(c[i], 'click');
-    };
-    evee.off(e, 'click', h);
+    for (var i=children.length; i--;) {
+      var e = children[i];
+      data.el = e;
+      evee.fire(e, 'focus');
+    }
+    evee.off(el, 'focus', h);
   });
 
   it('supports selectors', function(done) {
-    evee.delegate(e, 'focus', '.klass', function(ev) {
+    evee.delegate(el, 'focus', '.klass', function(ev) {
       done();
     });
     var b = $('b');
     b.classList.add('klass');
-    e.appendChild(b);
+    el.appendChild(b);
     evee.fire(b, 'focus');
   });
 
   it('will not fire if the selector does not match', function() {
-    var b = $('b');
-    e.appendChild(b);
-    evee.delegate(e, 'click', '#crazy .class #id', function() {
+    evee.delegate(el, 'keyup', '#id', function() {
       assert(false);
     });
-    evee.fire(b, 'click');
+    evee.fire(children[0], 'keyup');
   });
 });
