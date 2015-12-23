@@ -1,9 +1,8 @@
 describe('evee.delegate', function() {
   var e = $('p');
-  [1,2,3].forEach(function() {
-    e.appendChild(document.createElement('i'));
-  });
-  var c = Array.prototype.slice.call(e.childNodes);
+  for (var i=3; i--;)
+    e.appendChild($('i'));
+  var c = e.childNodes;
 
   it('returns the delegated handler', function() {
     var h = evee.delegate(e, 'click', 'i', function(ev) {
