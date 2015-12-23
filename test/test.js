@@ -1,11 +1,15 @@
 describe('evee', function() {
-  var data = {r: 0};
+  var data = {};
   var elem = $('test');
 
   var handler = function(ev) {
-    data.r += 1;
+    data.r = 1;
     assert(ev.target === elem);
   };
+
+  afterEach(function() {
+    data = {};
+  });
 
   describe('#fire', function() {
     it('works for normal events', function() {
@@ -17,27 +21,22 @@ describe('evee', function() {
     it('works for mouse events', function() {
       evee.on(elem, 'click', handler);
       evee.fire(elem, 'click');
-      assert(data.r === 2);
+      assert(data.r === 1);
     });
 
     it('works for keyboard events', function() {
-      evee.on(elem, 'keydown', function() {
-        data.t = 1;
-      });
+      evee.on(elem, 'keydown', handler);
       evee.fire(elem, 'keydown');
-      assert(data.t === 1);
+      assert(data.r === 1);
     });
   });
 
   describe('#off', function() {
     it('unbinds handlers', function() {
-      var fn = function() {
-        data.g = 1;
-      }
-      evee.on(elem, 'click', fn);
-      evee.off(elem, 'click', fn);
+      evee.on(elem, 'click', handler);
+      evee.off(elem, 'click', handler);
       evee.fire(elem, 'click');
-      assert(!data.g);
+      assert(!data.r);
     });
   });
 });
