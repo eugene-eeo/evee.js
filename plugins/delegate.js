@@ -11,7 +11,7 @@ evee.delegate = (function() {
   return function(el, type, selector, fn) {
     return evee.on(el, type, function(ev) {
       var target = ev.target;
-      while (target && (target !== this.el)) {
+      while (target && (target !== el)) {
         if (matchesSelector.call(target, selector))
           fn(ev);
         target = target.parentNode;
