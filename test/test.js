@@ -37,11 +37,13 @@ describe('evee.fire', function() {
 
   for (var i in ev) {
     var type = ev[i];
-    it('works for ' + i + ' events', function(done) {
-      evee.on(el, type, function() {
-        done();
-      }); 
-      evee.fire(el, type);
-    });
+    it('works for ' + i + ' events', (function(type) {
+      return function(done) {
+        evee.on(el, type, function() {
+          done();
+        });
+        evee.fire(el, type);
+      };
+    })(type));
   }
 });
