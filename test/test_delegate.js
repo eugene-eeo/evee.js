@@ -24,6 +24,16 @@ describe('evee.delegate', function() {
     evee.off(e, 'click', h);
   });
 
+  it('supports selectors', function(done) {
+    evee.delegate(e, 'focus', '.klass', function(ev) {
+      done();
+    });
+    var b = $('b');
+    b.classList.add('klass');
+    e.appendChild(b);
+    evee.fire(b, 'focus');
+  });
+
   it('will not fire if the selector does not match', function() {
     var b = $('b');
     e.appendChild(b);
