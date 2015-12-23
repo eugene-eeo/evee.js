@@ -1,73 +1,83 @@
-<!doctype html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Evee.js by eugene-eeo</title>
+<head>
+  <meta charset='utf8'/>
+  <title>evee.js</title>
 
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/github-light.css">
-    <script src="javascripts/scale.fix.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-  </head>
-  <body>
-    <div class="wrapper">
-      <header>
-        <h1 class="header">Evee.js</h1>
-        <p class="header">Modern event binding</p>
+  <style>
+body {
+  width: 24em;
+  font-size: 20px;
+  font-family: Georgia, serif;
+  margin: 3em auto;
+  text-align: center;
+}
+h1 {
+  margin: 0 0.5em;
+  font-weight: normal;
+  color: #D09141;
+}
+pre {
+  overflow: auto;
+  padding: 0.5em;
+  font-family: 'Consolas', monospace;
+  background-color: #F0F0F0;
+}
+img {
+  display: block;
+  margin: 0.5em auto;
+}
+footer {
+  font-size: 0.8em;
+  color: #555;
+}
+a {
+  color: #FFF;
+  font-weight: bold;
+  display: inline-block;
+  background-color: #D09141;
+  padding: 0.4em;
+  text-decoration: none;
+  min-width: 6em;
+  margin: 0.6em 0;
+}
+a:hover {
+  background-color: #9C583A;
+  color: #EEE;
+}
+@media only screen and (max-device-width: 480px) {
+  body {
+    width: inherit;
+    font-size: 18px;
+    margin: 1.5em 1em;
+  }
+  #links {
+    margin: 1.5em auto;
+  }
+  a {
+    border-radius: 0;
+    display: block;
+    width: calc(100% - 5em);
+    margin: 0.5em auto;
+  }
+}
+  </style>
+</head>
+<body>
+  <img src='data:image/jpeg;base64,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'/>
+  <h1>evee.js</h1>
+  <p>
+    Tiny, modern, and modular DOM events library. Weighs
+    in at 0.8kB minified (including all plugins), and doesn't
+    muck around with prototypes.
+  </p>
+  <pre>evee.on(el, 'click', fn);</pre>
 
-        <ul>
-          <li class="download"><a class="buttons" href="https://github.com/eugene-eeo/evee.js/zipball/master">Download ZIP</a></li>
-          <li class="download"><a class="buttons" href="https://github.com/eugene-eeo/evee.js/tarball/master">Download TAR</a></li>
-          <li><a class="buttons github" href="https://github.com/eugene-eeo/evee.js">View On GitHub</a></li>
-        </ul>
-
-        <p class="header">This project is maintained by <a class="header name" href="https://github.com/eugene-eeo">eugene-eeo</a></p>
-
-
-      </header>
-      <section>
-        <h1>
-<a id="eveejs" class="anchor" href="#eveejs" aria-hidden="true"><span class="octicon octicon-link"></span></a>evee.js</h1>
-
-<p>Modular, modern, and tiny DOM events library.</p>
-
-<ul>
-<li>Comes in at 0.3kB minified without any plugins</li>
-<li>The entire suite (including all plugins) weighs
-in around 0.8kB minified</li>
-<li>Support for event delegation and Event data</li>
-<li>No mucking around with prototypes</li>
-<li>Extensible with <a href="https://github.com/eugene-eeo/evee.js/tree/master/plugins">plugins</a>
-</li>
-</ul>
-
-<p>Works great with <a href="https://github.com/james2doyle/saltjs">salt.js</a>
-and <a href="https://github.com/yanatan16/nanoajax">nanojax</a>.</p>
-
-<h2>
-<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h2>
-
-<div class="highlight highlight-text-html-basic"><pre>&lt;<span class="pl-ent">script</span> <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">'</span>/path/to/evee.js<span class="pl-pds">'</span></span>&gt;&lt;/<span class="pl-ent">script</span>&gt;</pre></div>
-
-<div class="highlight highlight-source-js"><pre><span class="pl-smi">evee</span>.<span class="pl-en">on</span>(el, <span class="pl-s"><span class="pl-pds">'</span>click<span class="pl-pds">'</span></span>, <span class="pl-k">function</span>(<span class="pl-smi">ev</span>) {
-});
-<span class="pl-smi">evee</span>.<span class="pl-en">fire</span>(el, <span class="pl-s"><span class="pl-pds">'</span>click<span class="pl-pds">'</span></span>);
-<span class="pl-smi">evee</span>.<span class="pl-en">off</span>(el, <span class="pl-s"><span class="pl-pds">'</span>click<span class="pl-pds">'</span></span>, fn);</pre></div>
-
-<h3>
-<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h3>
-
-<div class="highlight highlight-source-shell"><pre>$ bower install eugene-eeo/evee.js</pre></div>
-      </section>
-      <footer>
-        <p><small>Hosted on <a href="https://pages.github.com">GitHub Pages</a> using the Dinky theme</small></p>
-      </footer>
-    </div>
-    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
-		
-  </body>
+  <div class='links'>
+    <a href='https://github.com/eugene-eeo/evee.js'>Github</a>
+    <a href='https://github.com/eugene-eeo/evee.js/releases/latest'>Download</a>
+  </div>
+  <footer>
+    Made with ♥ by Eeo Jun
+  </footer>
+</body>
 </html>
