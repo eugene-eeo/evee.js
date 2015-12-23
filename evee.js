@@ -5,6 +5,7 @@ evee = (function() {
   return {
     on: function(el, type, fn) {
       el.addEventListener(type, fn);
+      return fn;
     },
 
     off: function(el, type, fn) {

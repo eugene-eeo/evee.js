@@ -17,7 +17,5 @@ evee.bind = function(el, type, data, fn) {
     fn = data;
     data = {};
   }
-  var h = evee.make(data, fn);
-  evee.on(el, type, h);
-  return h;
+  return evee.on(el, type, evee.make(data, fn));
 };

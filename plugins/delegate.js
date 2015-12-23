@@ -9,15 +9,13 @@ evee.delegate = (function() {
   );
 
   return function(el, type, selector, fn) {
-    var h = function(ev) {
+    return evee.on(el, type, function(ev) {
       var target = ev.target;
       while (target && (target !== this.el)) {
         if (matchesSelector.call(target, selector))
           fn(ev);
         target = target.parentNode;
       }
-    };
-    evee.on(el, type, h);
-    return h;
+    });
   };
 })();
