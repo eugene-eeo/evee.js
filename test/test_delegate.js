@@ -28,7 +28,7 @@ describe('evee.delegate', function() {
     evee.off(el, 'focus', h);
   });
 
-  it('calls the handler with the target and event', function() {
+  it('calls the handler with the event and target', function() {
     var data = {};
     var h = evee.delegate(el, 'focus', 'a', function(ev, t) {
       assert(t === ev.target);
