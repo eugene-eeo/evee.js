@@ -57,4 +57,8 @@ describe('evee.delegate', function() {
     });
     evee.fire(children[0], 'keyup');
   });
+
+  after(function() {
+    document.removeChild(el);
+  });
 });
