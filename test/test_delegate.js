@@ -28,10 +28,11 @@ describe('evee.delegate', function() {
     evee.off(el, 'focus', h);
   });
 
-  it('calls the handler with the correct target', function() {
+  it('calls the handler with the target and event', function() {
     var data = {};
-    var h = evee.delegate(el, 'focus', 'a', function(ev) {
-      assert(ev.target === data.el);
+    var h = evee.delegate(el, 'focus', 'a', function(ev, t) {
+      assert(t === ev.target);
+      assert(t === data.el);
     });
     for (var i=children.length; i--;) {
       var e = children[i];

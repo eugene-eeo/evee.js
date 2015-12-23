@@ -32,6 +32,8 @@ evee.off(el, t, fn);
 ```
 
 ```js
-var fn = evee.delegate(table, 'click', '.h', function(ev) {
+var fn = evee.delegate(table, 'click', '.h', function(ev, node) {
+  // `ev.target` is the source node
+  // `node` matches '.h'
 });
 ```
