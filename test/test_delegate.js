@@ -42,16 +42,6 @@ describe('evee.delegate', function() {
     evee.off(el, 'focus', h);
   });
 
-  it('supports selectors', function(done) {
-    evee.delegate(el, 'focus', '.klass', function(ev) {
-      done();
-    });
-    var b = $('b');
-    b.classList.add('klass');
-    el.appendChild(b);
-    evee.fire(b, 'focus');
-  });
-
   it('will not fire if the selector does not match', function() {
     evee.delegate(el, 'keyup', '#id', function() {
       assert(false);
@@ -71,7 +61,6 @@ describe('evee.delegate', function() {
     });
 
     evee.fire(c2, 'keydown');
-    console.log(counter);
     assert(counter === 1);
   });
 
