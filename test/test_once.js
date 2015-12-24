@@ -18,4 +18,12 @@ describe('evee.once', function() {
     evee.fire(e, 'focus');
     assert(o === 1);
   });
+
+  it('returns the handler', function() {
+    var f = evee.once(e, 'focus', function() {
+      assert(false);
+    });
+    evee.off(e, 'focus', f);
+    evee.fire(e, 'focus');
+  });
 });
