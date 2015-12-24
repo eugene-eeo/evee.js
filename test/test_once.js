@@ -1,5 +1,5 @@
 describe('evee.once', function() {
-  var e = document.createElement('p');
+  var e = $('p');
 
   it('binds the handler to the element', function(done) {
     evee.once(e, 'click', function() {
