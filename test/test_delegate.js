@@ -59,6 +59,22 @@ describe('evee.delegate', function() {
     evee.fire(children[0], 'keyup');
   });
 
+  it('will only call the handler once', function() {
+    var c1 = children[0];
+    var c2 = $('a');
+    var counter = 0;
+
+    c1.appendChild(c2);
+
+    evee.delegate(el, 'keydown', '*', function() {
+      counter++;
+    });
+
+    evee.fire(c2, 'keydown');
+    console.log(counter);
+    assert(counter === 1);
+  });
+
   after(function() {
     document.body.removeChild(el);
   });
