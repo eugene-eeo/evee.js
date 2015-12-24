@@ -1,4 +1,4 @@
-evee.make = (function() { 
+evee.make = (function() {
   var Event = function(ev, data) {
     this.data = data;
     for (var i in ev)
