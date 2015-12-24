@@ -13,7 +13,7 @@ evee.delegate = (function() {
       var node = ev.target;
       while (node !== el) {
         if (matchesSelector.call(node, selector))
-          fn(ev, node);
+          return fn(ev, node);
         node = node.parentNode;
       }
     });
