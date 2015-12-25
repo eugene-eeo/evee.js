@@ -13,10 +13,10 @@ describe('evee.once', function() {
     evee.once(e, 'focus', function() {
       o += 1;
     });
-    evee.fire(e, 'focus');
-    assert(o === 1);
-    evee.fire(e, 'focus');
-    assert(o === 1);
+    for (var i=3; i--;) {
+      evee.fire(e, 'focus');
+      assert(o === 1);
+    };
   });
 
   it('returns the handler', function() {
