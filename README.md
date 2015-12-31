@@ -22,6 +22,7 @@ and [nanojax](https://github.com/yanatan16/nanoajax).
 var fn = evee.on(el, 'click', function(ev) {
 });
 evee.fire(el, 'click');
+evee.fire(el, 'click', override);
 evee.off(el, 'click', fn);
 ```
 
