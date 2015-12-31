@@ -12,15 +12,15 @@ evee = (function() {
       el.removeEventListener(type, fn);
     },
 
-    fire: function(el, type) {
+    fire: function(el, type, obj) {
+      var config = {
+        bubbles: true,
+        cancelable: true,
+      };
       var cons = mseEvents.test(type)
         ? MouseEvent
         : (kbdEvents.test(type) ? KeyboardEvent : Event);
-      el.dispatchEvent(new cons(
-        type, {
-          bubbles: true,
-          cancelable: true,
-        }));
+      el.dispatchEvent(new cons(type, obj || config));
     },
   };
 })();

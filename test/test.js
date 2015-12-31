@@ -46,4 +46,12 @@ describe('evee.fire', function() {
       };
     })(type));
   }
+
+  it('allows a config object', function(done) {
+    evee.on(el, 'keydown', function(ev) {
+      assert(ev.shiftKey);
+      done();
+    });
+    evee.fire(el, 'keydown', {shiftKey: true});
+  });
 });
