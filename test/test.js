@@ -54,4 +54,12 @@ describe('evee.fire', function() {
     });
     evee.fire(el, 'keydown', {shiftKey: true});
   });
+
+  it("doesn't mistaken custom events for normal ones", function(done) {
+    evee.on(el, 'mousedowncustom', function(ev) {
+      assert(!(ev instanceof MouseEvent));
+      done();
+    });
+    evee.fire(el, 'mousedowncustom');
+  });
 });
