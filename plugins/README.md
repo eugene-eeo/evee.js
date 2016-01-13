@@ -7,6 +7,10 @@ evee.once(el, 'click', function(ev) {
 
 ## bind.js
 
+Most of the time, you can just use `Function.bind` to achieve
+what you want. But if that isn't your cup of tea, you can use
+the bind plugin.
+
 ```js
 // data is now available in ev.data
 var fn = evee.make(data, function(ev) {
