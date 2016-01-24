@@ -1,4 +1,4 @@
-evee.delegate = (function() {
+!function() {
   var e = Element.prototype;
   var matchesSelector = (
     e.matches
@@ -8,11 +8,11 @@ evee.delegate = (function() {
       || e.oMatchesSelector
   );
 
-  return function(el, type, selector, fn) {
+  evee.delegate = function(el, type, selector, fn) {
     return evee.on(el, type, function(ev) {
       for (var node = ev.target; node !== el; node = node.parentNode)
         if (matchesSelector.call(node, selector))
           return fn(ev, node);
     });
   };
-})();
+}();

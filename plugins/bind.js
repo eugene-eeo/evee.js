@@ -1,16 +1,16 @@
-evee.make = (function() {
+!function() {
   var Event = function(ev, data) {
     this.data = data;
     for (var i in ev)
       this[i] = ev[i];
   };
 
-  return function(data, fn) {
+  evee.make = function(data, fn) {
     return function(ev) {
       fn(new Event(ev, data));
     };
   };
-})();
+}();
 
 evee.bind = function(el, type, data, fn) {
   if (!fn) {

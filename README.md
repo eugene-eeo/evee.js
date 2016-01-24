@@ -9,7 +9,7 @@ Modular, modern, and tiny DOM events library.
  - No mucking around with prototypes
  - Extensible with [plugins](https://github.com/eugene-eeo/evee.js/tree/master/plugins)
 
-Works great with [salt.js](https://github.com/james2doyle/saltjs)
+Works great with [nut.js](https://github.com/eugene-eeo/nut.js)
 and [nanojax](https://github.com/yanatan16/nanoajax).
 
 ## Usage

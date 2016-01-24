@@ -1,8 +1,8 @@
-evee = (function() {
+!function() {
   var mseEvents = /^click|mouse(down|up|move)$/;
   var kbdEvents = /^key(down|up|press)$/;
 
-  return {
+  evee = {
     on: function(el, type, fn) {
       el.addEventListener(type, fn);
       return fn;
@@ -23,4 +23,4 @@ evee = (function() {
       el.dispatchEvent(new cons(type, config));
     },
   };
-})();
+}();
