@@ -31,3 +31,11 @@ evee.off(el, 'click', fn);
 ```sh
 $ bower install eugene-eeo/evee.js
 ```
+
+### Hacking
+
+```sh
+$ git clone github.com/eugene-eeo/evee.js
+$ cd evee.js
+$ make
+```
