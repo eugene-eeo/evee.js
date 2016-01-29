@@ -20,7 +20,10 @@
     "tests"
   ],
   "devDependencies": {
-    "mocha": "mochajs/mocha#~2.3.4",
+    "mocha": "^2.4.5",
     "assert.js": "eugene-eeo/assert.js#~0.1.1"
+  },
+  "resolutions": {
+    "mocha": "^2.4.5"
   }
 }
