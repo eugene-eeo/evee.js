@@ -1,6 +1,6 @@
 !function() {
-  var mseEvents = /^click|mouse(down|up|move)$/;
-  var kbdEvents = /^key(down|up|press)$/;
+  var mouseEvents = /^click|mouse(down|up|move)$/;
+  var keybdEvents = /^key(down|up|press)$/;
 
   evee = {
     on: function(el, type, fn) {
@@ -17,9 +17,9 @@
         bubbles: true,
         cancelable: true,
       };
-      var cons = mseEvents.test(type)
+      var cons = mouseEvents.test(type)
         ? MouseEvent
-        : (kbdEvents.test(type) ? KeyboardEvent : Event);
+        : (keybdEvents.test(type) ? KeyboardEvent : Event);
       el.dispatchEvent(new cons(type, config));
     },
   };
